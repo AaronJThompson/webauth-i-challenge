@@ -1,5 +1,11 @@
 const db = require('../data/dbConfig');
 
+module.exports = {
+    add,
+    findByID,
+    findByUsername
+}
+
 function add(username, password) {
     return db('users')
         .insert({username, password})
