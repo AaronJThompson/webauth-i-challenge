@@ -1,0 +1,30 @@
+{
+  "name": "webauth-i-challenge",
+  "version": "1.0.0",
+  "description": "- Authentication.\r - Express Middleware.\r - Password Hashing.\r - Sessions\r - Cookies",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronJThompson/webauth-i-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronJThompson/webauth-i-challenge/issues"
+  },
+  "homepage": "https://github.com/AaronJThompson/webauth-i-challenge#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "btoa": "^1.2.1",
+    "connect-session-knex": "^1.4.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "helmet": "^3.19.0",
+    "knex": "^0.19.0",
+    "sqlite3": "^4.0.9"
+  }
+}
