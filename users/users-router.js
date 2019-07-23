@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 
 function resricted(req, res, next) {
     if(req.session && req.session.user) {
-        next()
+        next();
+        return;
     } else {
         res.status(401).send("Unauthorized!");
     }
@@ -40,5 +41,12 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.get('/users')
+router.get('/users', resricted, async (req, res) => {
+    try {
+        const users = await UsersDB.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Couln't get users" });
+    }
+})
 module.exports = router;
