@@ -2,7 +2,6 @@ const router = require('express').Router();
 const UsersDB = require('./users-model');
 const bcrypt = require('bcrypt');
 
-
 function resricted(req, res, next) {
     if(req.session && req.session.user) {
         next();
