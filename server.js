@@ -3,7 +3,7 @@ const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session);
 const cookieParser = require('cookie-parser');
 const server = express();
-
+const cors = require('cors');
 server.use(cookieParser());
 server.use(session({
   name: 'sessionID',
@@ -23,6 +23,7 @@ server.use(session({
     clearInterval: 1000 * 60 * 60, // time it takes to check for old sessions and remove them from the database to keep it clean and performant
   }),
 }));
+server.use(cors());
 
 const userRouter = require('./users/users-router');
 server.use(express.json());

@@ -2,6 +2,15 @@ const router = require('express').Router();
 const UsersDB = require('./users-model');
 const bcrypt = require('bcrypt');
 
+function resricted(req, res, next) {
+    if(req.session && req.session.user) {
+        next();
+        return;
+    } else {
+        res.status(401).send("Unauthorized!");
+    }
+}
+
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
 
@@ -28,6 +37,15 @@ router.post('/login', async (req, res) => {
         }
     } catch (error) {
         res.status(500).json(error);
+    }
+})
+
+router.get('/users', resricted, async (req, res) => {
+    try {
+        const users = await UsersDB.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Couln't get users" });
     }
 })
 module.exports = router;
